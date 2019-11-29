@@ -51,7 +51,14 @@ class Transaction
     SqlRunner.run(sql, values)
   end
 
-  # method to find the total of all the transactions
+  # class level method to delete a transaction by id
+  def self.destroy(id)
+    sql = "DELETE FROM transactions WHERE id = $1"
+    values = [id]
+    SqlRunner.run(sql, values)
+  end
+
+  # class level method to find the total of all the transactions
   def self.total()
     sql = "SELECT SUM(amount) FROM transactions"
     result = SqlRunner.run(sql)
