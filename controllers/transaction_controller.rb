@@ -17,3 +17,9 @@ get '/transactions/new' do
   @merchants = Merchant.all()
   erb(:"transactions/new")
 end
+
+post '/transactions' do
+  transaction = Transaction.new(params)
+  transaction.save()
+  redirect to ("/transactions")
+end
