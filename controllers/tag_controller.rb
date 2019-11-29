@@ -15,3 +15,15 @@ end
 get '/tags/new' do
   erb(:"tags/new")
 end
+
+post '/tags' do
+  tag = Tag.new(params)
+  tag.save()
+  redirect to ("/tags")
+end
+
+post '/tags/:id/delete' do
+  tag = Tag.find_by_id(params['id'])
+  tag.delete()
+  redirect to ("tags")
+end

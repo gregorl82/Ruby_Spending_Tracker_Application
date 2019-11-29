@@ -4,7 +4,7 @@
   <p>
     <%= tag.tag_name %>
     <a href="/tags/<%= tag.id %>/edit">Edit</a>
-    <form action="/tags/<%= tag.id %>" method="post">
+    <form action="/tags/<%= tag.id %>/delete" method="post">
       <input type="submit" value="Delete">
     </form>
   </p>
