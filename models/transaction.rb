@@ -1,3 +1,5 @@
+require_relative('../db/sql_runner.rb')
+
 class Transaction
 
   attr_accessor :merchant_id, :tag_id, :amount
@@ -8,6 +10,13 @@ class Transaction
     @merchant_id = options['merchant_id'].to_i()
     @tag_id = options['tag_id'].to_i()
     @amount = options['amount'].to_f()
+  end
+
+  def save()
+    sql = "INSERT INTO transactions (merchant_id, tag_id, amount) VALUES ($1, $2, $3) RETURNING id"
+    values = [@merchant_id, @tag_id, @amount]
+    result = SqlRunner.run(sql, values)
+    @id = result[0]['id'].to_i()
   end
 
 #
