@@ -11,3 +11,13 @@ get '/merchants' do
   @merchants = merchants.sort_by {|merchant| merchant.id}
   erb(:"merchants/index")
 end
+
+get '/merchants/new' do
+  erb(:"merchants/new")
+end
+
+post '/merchants' do
+  merchant = Merchant.new(params)
+  merchant.save()
+  redirect to ("/merchants")
+end
