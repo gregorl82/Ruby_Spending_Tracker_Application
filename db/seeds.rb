@@ -15,6 +15,22 @@ merchant1 = Merchant.new(
 
 merchant1.save()
 
+merchant2 = Merchant.new(
+  {
+    'merchant_name' => 'Amazon'
+  }
+)
+
+merchant2.save()
+
+merchant3 = Merchant.new(
+  {
+    'merchant_name' => 'WH Smith'
+  }
+)
+
+merchant3.save()
+
 # Tags
 
 tag1 = Tag.new(
