@@ -1,0 +1,14 @@
+<h2>Tags</h2>
+
+<% for tag in @tags %>
+  <p>
+    <%= tag.tag_name %>
+    <a href="/tags/<%= tag.id %>/edit">Edit</a>
+    <form action="/tags/<%= tag.id %>" method="post">
+      <input type="submit" value="Delete">
+    </form>
+  </p>
+  <hr />
+<% end %>
+
+<p><a href="/tags/new">Add</a> <a href="/transactions/new">Cancel</a></p>
