@@ -8,7 +8,8 @@ also_reload('../models/*')
 
 get '/transactions' do
   @total = Transaction.total()
-  @transactions = Transaction.all()
+  transactions = Transaction.all()
+  @transactions = transactions.sort_by! {|transaction| transaction.id}
   erb(:"transactions/index")
 end
 
