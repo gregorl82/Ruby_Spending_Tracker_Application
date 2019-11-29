@@ -11,3 +11,7 @@ get '/tags' do
   @tags = tags.sort_by! {|tag| tag.id}
   erb(:"tags/index")
 end
+
+get '/tags/new' do
+  erb(:"tags/new")
+end
