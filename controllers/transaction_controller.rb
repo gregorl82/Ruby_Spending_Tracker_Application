@@ -24,6 +24,18 @@ post '/transactions' do
   redirect to ("/transactions")
 end
 
+get '/transactions/:id/edit' do
+  @tags = Tag.all()
+  @merchants = Merchant.all()
+  @transaction = Transaction.find_by_id(params[:id])
+  erb(:"transactions/edit")
+end
+
+post '/transactions/:id' do
+  Transaction.new(params).update()
+  redirect to ("/transactions")
+end
+
 post '/transactions/:id/delete' do
   Transaction.destroy(params[:id])
   redirect to ("/transactions")
