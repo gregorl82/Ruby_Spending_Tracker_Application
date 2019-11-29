@@ -3,6 +3,7 @@ require_relative('../models/merchant.rb')
 require_relative('../models/tag.rb')
 
 Merchant.delete_all()
+Tag.delete_all()
 
 # Merchants
 
