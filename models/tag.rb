@@ -30,6 +30,12 @@ class Tag
     return Tag.new(result)
   end
 
+  def update()
+    sql = "UPDATE tags SET tag_name = $1 WHERE id = $2"
+    values = [@tag_name, @id]
+    SqlRunner.run(sql, values)
+  end
+
   def self.delete_all()
     sql = "DELETE FROM tags"
     SqlRunner.run(sql)
