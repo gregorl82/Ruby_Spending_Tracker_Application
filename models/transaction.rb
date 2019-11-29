@@ -19,6 +19,19 @@ class Transaction
     @id = result[0]['id'].to_i()
   end
 
+  def self.all()
+    sql = "SELECT * FROM transactions"
+    transactions = SqlRunner.run(sql)
+    return transactions.map {|transaction| Transaction.new(transaction)}
+  end
+
+  def self.find_by_id(id)
+    sql = "SELECT * FROM transactions WHERE id = $1"
+    values = [id]
+    result = SqlRunner.run(sql, values).first()
+    return Transaction.new(result)
+  end
+
   def self.delete_all()
     sql = "DELETE FROM transactions"
     SqlRunner.run(sql)
