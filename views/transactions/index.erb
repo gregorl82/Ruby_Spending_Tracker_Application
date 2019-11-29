@@ -1,4 +1,4 @@
-<h2>Total spent: £<%= @total %></h2>
+<h2>Total spent: £<%= "%.2f" % @total %></h2>
 
 <% for transaction in @transactions %>
   <p><%= transaction.tag().tag_name %></p>
