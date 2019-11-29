@@ -1,6 +1,8 @@
 require('pry')
 require_relative('../models/merchant.rb')
 
+Merchant.delete_all()
+
 # Merchants
 
 merchant1 = Merchant.new(
