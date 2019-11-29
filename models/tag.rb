@@ -35,5 +35,11 @@ class Tag
     SqlRunner.run(sql)
   end
 
+  def delete()
+    sql = "DELETE FROM tags WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
 #
 end
