@@ -56,5 +56,21 @@ class Transaction
     return result[0]['sum'].to_f()
   end
 
+  # method to return the name of the tag
+  def get_tag_name()
+    sql = "SELECT * FROM tags WHERE id = $1"
+    values = [@tag_id]
+    result = SqlRunner.run(sql, values).first()
+    return result['tag_name']
+  end
+
+  # method to return the name of the merchant
+  def get_merchant_name()
+    sql = "SELECT * FROM merchants WHERE id = $1"
+    values = [@merchant_id]
+    result = SqlRunner.run(sql, values).first()
+    return result['merchant_name']
+  end
+
 #
 end
