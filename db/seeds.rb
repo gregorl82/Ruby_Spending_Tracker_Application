@@ -1,5 +1,6 @@
 require('pry')
 require_relative('../models/merchant.rb')
+require_relative('../models/tag.rb')
 
 Merchant.delete_all()
 
@@ -13,6 +14,15 @@ merchant1 = Merchant.new(
 
 merchant1.save()
 
+# Tags
+
+tag1 = Tag.new(
+  {
+    'tag_name' => 'entertainment'
+  }
+)
+
+tag1.save()
 
 binding.pry
 
