@@ -21,3 +21,9 @@ post '/merchants' do
   merchant.save()
   redirect to ("/merchants")
 end
+
+post '/merchants/:id/delete' do
+  merchant = Merchant.find_by_id(params['id'])
+  merchant.delete()
+  redirect to ("/merchants")
+end

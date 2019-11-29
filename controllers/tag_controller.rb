@@ -35,5 +35,5 @@ end
 post '/tags/:id/delete' do
   tag = Tag.find_by_id(params['id'])
   tag.delete()
-  redirect to ("tags")
+  redirect to ("/tags")
 end
