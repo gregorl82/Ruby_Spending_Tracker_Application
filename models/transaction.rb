@@ -58,7 +58,7 @@ class Transaction
     return result[0]['sum'].to_f()
   end
 
-  # method to return the name of the tag
+  # method to return the tag via tag_id
   def tag()
     sql = "SELECT * FROM tags WHERE id = $1"
     values = [@tag_id]
@@ -66,7 +66,7 @@ class Transaction
     return Tag.new(result)
   end
 
-  # method to return the name of the merchant
+  # method to return the merchant via merchant_id
   def merchant()
     sql = "SELECT * FROM merchants WHERE id = $1"
     values = [@merchant_id]
