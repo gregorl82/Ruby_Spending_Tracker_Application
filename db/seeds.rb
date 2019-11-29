@@ -41,6 +41,22 @@ tag1 = Tag.new(
 
 tag1.save()
 
+tag2 = Tag.new(
+  {
+    'tag_name' => 'groceries'
+  }
+)
+
+tag2.save()
+
+tag3 = Tag.new(
+  {
+    'tag_name' => 'stationery'
+  }
+)
+
+tag3.save()
+
 binding.pry
 
 nil
