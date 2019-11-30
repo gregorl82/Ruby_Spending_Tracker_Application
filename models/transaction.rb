@@ -1,3 +1,4 @@
+require('time')
 require_relative('../db/sql_runner.rb')
 require_relative('merchant.rb')
 require_relative('tag.rb')
@@ -80,6 +81,20 @@ class Transaction
     values = [@merchant_id]
     result = SqlRunner.run(sql, values).first()
     return Merchant.new(result)
+  end
+
+  # method to display the time part of the transaction_time
+
+  def display_time()
+    time = Time.parse(@transaction_time)
+    return time.strftime("%H:%M")
+  end
+
+  # method to display the date part of the transaction_time
+
+  def display_date()
+    date = Time.parse(@transaction_time)
+    return date.strftime("%d %b %Y")
   end
 
 #
