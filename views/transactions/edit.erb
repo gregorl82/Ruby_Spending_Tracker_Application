@@ -33,7 +33,7 @@
 
   <label for="amount">
     Enter an amount: £
-    <input type="number" name="amount" step="0.01" value="<%= "%.2f" % @transaction.amount %>">
+    <input type="number" name="amount" step="0.01" value="<%= "%.2f" % @transaction.amount %>" required>
   </label>
 
   <input type="submit" value="Update">
