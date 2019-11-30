@@ -19,6 +19,18 @@ get '/transactions/new' do
   erb(:"transactions/new")
 end
 
+get '/transactions/sortbydateasc' do
+  @total = Transaction.total()
+  @transactions = Transaction.order_by_time()
+  erb(:"transactions/index")
+end
+
+get '/transactions/sortbydatedesc' do
+  @total = Transaction.total()
+  @transactions = Transaction.order_by_time().reverse
+  erb(:"transactions/index")
+end
+
 post '/transactions' do
   transaction = Transaction.new(params)
   transaction.save()

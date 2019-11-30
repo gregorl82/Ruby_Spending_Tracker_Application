@@ -97,5 +97,20 @@ class Transaction
     return date.strftime("%d %b %Y")
   end
 
+  # method to prepopulate the value for datetime-local in edit routes
+
+  def prepopulate_datetime()
+    split_string = @transaction_time.split(' ')
+    output = split_string[0] + "T" + split_string[1]
+    return output
+  end
+
+  # method to return transactions ordered by transaction_time
+  def self.order_by_time()
+    sql = "SELECT * FROM transactions ORDER BY transaction_time"
+    transactions = SqlRunner.run(sql)
+    return transactions.map {|transaction| Transaction.new(transaction)}
+  end
+
 #
 end

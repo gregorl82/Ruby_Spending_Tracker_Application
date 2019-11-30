@@ -1,6 +1,12 @@
 <h1>Edit transaction</h1>
 
 <form action="/transactions/<%= @transaction.id %>" method="post">
+
+  <label for="transaction-time">
+    Select a time and date:
+    <input type="datetime-local" name="transaction_time" value="<%= @transaction.prepopulate_datetime %>" required>
+  </label>
+
   <label for="tag-id">
     Select a tag:
     <select name="tag_id" id="tag-id">
