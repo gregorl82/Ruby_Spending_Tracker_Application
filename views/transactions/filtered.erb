@@ -1,0 +1,17 @@
+<h2>Transactions for category: <%= @tag %></h2>
+
+<% if @transactions.count != 0 %>
+
+  <% for transaction in @transactions %>
+    <p><%= transaction.display_date %> <%= transaction.display_time %> </p>
+    <p><%= transaction.tag().tag_name %></p>
+    <p><%= transaction.merchant().merchant_name %></p>
+    <p>£<%= "%.2f" % transaction.amount %></p>
+    <hr />
+  <% end %>
+
+<% else %>
+
+  <p>No transactions to display</p>
+
+<% end %>

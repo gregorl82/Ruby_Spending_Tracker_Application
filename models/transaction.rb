@@ -112,5 +112,16 @@ class Transaction
     return transactions.map {|transaction| Transaction.new(transaction)}
   end
 
+  def self.filter_by_tag(tag_name)
+    sql = "SELECT transactions.*
+      FROM transactions
+      INNER JOIN tags
+      ON transactions.tag_id = tags.id
+      WHERE tags.tag_name= $1"
+    values = [tag_name]
+    transactions = SqlRunner.run(sql, values)
+    return transactions.map {|transaction| Transaction.new(transaction)}
+  end
+
 #
 end

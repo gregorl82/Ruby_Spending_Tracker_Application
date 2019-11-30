@@ -1,6 +1,16 @@
 <h2>Total spent: £<%= "%.2f" % @total %></h2>
 
-<p>Order transactions by date: <a href="/transactions/sortbydateasc">Ascending</a>  <a href="/transactions/sortbydatedesc">Descending</a></p>
+<p>
+  Order transactions by date:
+  <a href="/transactions/sortbydateasc">Ascending</a>
+  <a href="/transactions/sortbydatedesc">Descending</a>
+</p>
+<p>
+  Filter transactions by tag:
+  <% for tag in @tags %>
+  <a href="/transactions/<%= tag.tag_name %>"><%= tag.tag_name%></a>
+  <% end %>
+</p>
 
 <% for transaction in @transactions %>
   <p><%= transaction.display_date %> <%= transaction.display_time %> </p>
