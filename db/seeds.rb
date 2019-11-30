@@ -65,7 +65,8 @@ transaction1 = Transaction.new(
   {
     'merchant_id' => merchant1.id,
     'tag_id' => tag1.id,
-    'amount' => 34.99
+    'amount' => 34.99,
+    'transaction_time' => '2019-11-28 14:30'
   }
 )
 
@@ -75,7 +76,8 @@ transaction2 = Transaction.new(
   {
     'merchant_id' => merchant2.id,
     'tag_id' => tag1.id,
-    'amount' => 25.00
+    'amount' => 25.00,
+    'transaction_time' => '2019-11-27 12:25'
   }
 )
 
@@ -85,7 +87,8 @@ transaction3 = Transaction.new(
   {
     'merchant_id' => merchant3.id,
     'tag_id' => tag3.id,
-    'amount' => 12.00
+    'amount' => 12.00,
+    'transaction_time' => '2019-11-27 10:20' 
   }
 )
 
