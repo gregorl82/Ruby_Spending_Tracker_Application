@@ -22,3 +22,9 @@ post '/budgets' do
   budget.save()
   redirect to ("/budgets")
 end
+
+post '/budgets/:id/delete' do
+  budget = Budget.find_by_id(params['id'])
+  budget.delete()
+  redirect to ("/budgets")
+end
