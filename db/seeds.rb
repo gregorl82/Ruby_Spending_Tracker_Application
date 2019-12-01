@@ -7,6 +7,7 @@ require_relative('../models/transaction.rb')
 Transaction.delete_all()
 Merchant.delete_all()
 Tag.delete_all()
+Budget.delete_all()
 
 # Merchants
 
@@ -71,13 +72,31 @@ budget1 = Budget.new(
 
 budget1.save()
 
+budget2 = Budget.new(
+  {
+    'budget_name' => 'Christmas shopping',
+    'budget_amount' => 120.00
+  }
+)
+
+budget2.save()
+
+budget3 = Budget.new(
+  {
+    'budget_name' => 'Food budget',
+    'budget_amount' => 170.00
+  }
+)
+
+budget3.save()
+
 # Transactions
 
 transaction1 = Transaction.new(
   {
     'merchant_id' => merchant1.id,
     'tag_id' => tag1.id,
-    'budget_id' => budget1.id,
+    'budget_id' => budget2.id,
     'amount' => 34.99,
     'transaction_time' => '2019-11-28 14:30'
   }
@@ -89,7 +108,7 @@ transaction2 = Transaction.new(
   {
     'merchant_id' => merchant2.id,
     'tag_id' => tag1.id,
-    'budget_id' => budget1.id,
+    'budget_id' => budget2.id,
     'amount' => 25.00,
     'transaction_time' => '2019-11-27 12:25'
   }
@@ -101,7 +120,7 @@ transaction3 = Transaction.new(
   {
     'merchant_id' => merchant3.id,
     'tag_id' => tag3.id,
-    'budget_id' => budget1.id,
+    'budget_id' => budget3.id,
     'amount' => 12.00,
     'transaction_time' => '2019-11-27 10:20'
   }

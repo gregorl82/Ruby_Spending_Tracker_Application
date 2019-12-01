@@ -18,4 +18,15 @@ class Budget
     @id = result[0]['id'].to_i()
   end
 
+  def delete()
+    sql = "DELETE FROM budgets WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM budgets"
+    SqlRunner.run(sql)
+  end
+
 end
