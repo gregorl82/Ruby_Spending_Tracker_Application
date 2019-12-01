@@ -2,6 +2,7 @@ require('time')
 require_relative('../db/sql_runner.rb')
 require_relative('merchant.rb')
 require_relative('tag.rb')
+require_relative('budget.rb')
 
 class Transaction
 
@@ -85,6 +86,14 @@ class Transaction
     values = [@merchant_id]
     result = SqlRunner.run(sql, values).first()
     return Merchant.new(result)
+  end
+
+  # method to return the budget via budget_id
+  def budget()
+    sql = "SELECT * FROM budgets WHERE id = $1"
+    values = [@budget_id]
+    result = SqlRunner.run(sql, values).first()
+    return Budget.new(result)
   end
 
   # method to display the time part of the transaction_time
