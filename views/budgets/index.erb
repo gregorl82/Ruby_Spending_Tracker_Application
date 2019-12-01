@@ -1,0 +1,11 @@
+<h2>Budgets</h2>
+
+<% for budget in @budgets %>
+
+  <p>Budget name: <%= budget.budget_name %></p>
+  <p>Budget amount: <%= "%.2f" % budget.budget_amount %></p>
+  <hr />
+
+<% end %>
+
+<p><a href="/transactions">Display all transactions</a></p>
