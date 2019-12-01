@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner.rb')
+require_relative('transaction.rb')
 
 class Budget
 
@@ -46,6 +47,32 @@ class Budget
   def self.delete_all()
     sql = "DELETE FROM budgets"
     SqlRunner.run(sql)
+  end
+
+  # method to get all the transactions for a budget
+
+  def transactions()
+    sql = "SELECT transactions.*
+      FROM transactions
+      INNER JOIN budgets
+      ON budgets.id = budget_id
+      WHERE budget_id = $1"
+    values = [@id]
+    transactions = SqlRunner.run(sql, values)
+    return transactions.map {|transaction| Transaction.new(transaction)}
+  end
+
+  # method to get the total spent for a budget
+
+  def total_spent()
+    sql = "SELECT SUM(amount)
+      FROM transactions
+      INNER JOIN budgets
+      ON budgets.id = budget_id
+      WHERE budget_id = $1;"
+    values = [@id]
+    result = SqlRunner.run(sql, values)
+    return result[0]['sum'].to_f()
   end
 
 end

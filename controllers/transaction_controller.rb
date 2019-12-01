@@ -8,6 +8,7 @@ also_reload('../models/*')
 
 get '/transactions' do
   @tags = Tag.all()
+  @budgets = Budget.all()
   @total = Transaction.total()
   transactions = Transaction.all()
   @transactions = transactions.sort_by! {|transaction| transaction.id}
@@ -16,22 +17,9 @@ end
 
 get '/transactions/new' do
   @tags = Tag.all()
+  @budgets = Budget.all()
   @merchants = Merchant.all()
   erb(:"transactions/new")
-end
-
-get '/transactions/sortbydateasc' do
-  @tags = Tag.all()
-  @total = Transaction.total()
-  @transactions = Transaction.order_by_time()
-  erb(:"transactions/index")
-end
-
-get '/transactions/sortbydatedesc' do
-  @tags = Tag.all()
-  @total = Transaction.total()
-  @transactions = Transaction.order_by_time().reverse
-  erb(:"transactions/index")
 end
 
 post '/transactions' do
@@ -48,6 +36,7 @@ end
 
 get '/transactions/:id/edit' do
   @tags = Tag.all()
+  @budgets = Budget.all()
   @merchants = Merchant.all()
   @transaction = Transaction.find_by_id(params[:id])
   erb(:"transactions/edit")

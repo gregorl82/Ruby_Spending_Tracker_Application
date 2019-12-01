@@ -23,6 +23,18 @@ post '/budgets' do
   redirect to ("/budgets")
 end
 
+get '/budgets/:id' do
+  id = params['id'].to_i()
+  budget = Budget.find_by_id(id)
+  total_spent = budget.total_spent()
+  @id = id
+  @name = budget.budget_name
+  @remaining = budget.budget_amount - total_spent
+  @spent = total_spent
+  @transactions = budget.transactions()
+  erb(:"budgets/show")
+end
+
 post '/budgets/:id/delete' do
   budget = Budget.find_by_id(params['id'])
   budget.delete()

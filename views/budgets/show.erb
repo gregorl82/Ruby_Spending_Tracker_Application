@@ -1,0 +1,31 @@
+<h2>Budget name: <%= @name %></h2>
+<p>Total spent: £<%="%.2f" % @spent %>  Amount remaining: £<%="%.2f" % @remaining %></p>
+
+<% if @transactions.count() != 0 %>
+
+  <p>
+    Order transactions by date:
+    <a href="/budgets/<%= @id %>/asc">Ascending</a>
+    <a href="/budgets/<%= @id %>/desc">Descending</a>
+  </p>
+
+  <% for transaction in @transactions %>
+    <p><%= transaction.display_date %> <%= transaction.display_time %> </p>
+    <p><%= transaction.tag().tag_name %></p>
+    <p><%= transaction.merchant().merchant_name %></p>
+    <p>£<%= "%.2f" % transaction.amount %></p>
+    <p><a href="/transactions/<%= transaction.id %>/edit">Edit</a></p>
+    <form action="/transactions/<%= transaction.id %>/delete" method="post">
+      <input type="submit" value="Delete">
+    </form>
+    <hr />
+
+  <% end %>
+
+<% else %>
+
+  <p>No transactions to diplay</p>
+
+<% end %>
+
+<p><a href="/transactions">Back to transactions</a></p>

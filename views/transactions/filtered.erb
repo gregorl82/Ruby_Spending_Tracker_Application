@@ -4,9 +4,9 @@
 
   <% for transaction in @transactions %>
     <p><%= transaction.display_date %> <%= transaction.display_time %> </p>
-    <p><%= transaction.tag().tag_name %></p>
     <p><%= transaction.merchant().merchant_name %></p>
     <p>£<%= "%.2f" % transaction.amount %></p>
+    <p>Budget: <%= transaction.budget().budget_name %></p>
     <hr />
   <% end %>
 
