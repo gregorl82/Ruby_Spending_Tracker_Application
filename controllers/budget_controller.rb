@@ -35,6 +35,32 @@ get '/budgets/:id' do
   erb(:"budgets/show")
 end
 
+get '/budgets/:id/asc' do
+  id = params['id'].to_i()
+  budget = Budget.find_by_id(id)
+  total_spent = budget.total_spent()
+  @id = id
+  @name = budget.budget_name
+  @remaining = budget.budget_amount - total_spent
+  @spent = total_spent
+  transactions = budget.transactions()
+  @transactions = transactions.sort_by! {|transaction| transaction.transaction_time}
+  erb(:"budgets/show")
+end
+
+get '/budgets/:id/desc' do
+  id = params['id'].to_i()
+  budget = Budget.find_by_id(id)
+  total_spent = budget.total_spent()
+  @id = id
+  @name = budget.budget_name
+  @remaining = budget.budget_amount - total_spent
+  @spent = total_spent
+  transactions = budget.transactions()
+  @transactions = transactions.sort_by! {|transaction| transaction.transaction_time}.reverse
+  erb(:"budgets/show")
+end
+
 post '/budgets/:id/delete' do
   budget = Budget.find_by_id(params['id'])
   budget.delete()
