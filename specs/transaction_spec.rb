@@ -11,6 +11,7 @@ class TransactionTest < MiniTest::Test
       {
         'merchant_id' => 1,
         'tag_id' => 3,
+        'budget_id' => 1,
         'amount' => 25.99,
         'transaction_time' => '2019-11-30 12:30'
       }
@@ -27,6 +28,10 @@ class TransactionTest < MiniTest::Test
 
   def test_can_get_tag_id()
     assert_equal(3, @transaction1.tag_id)
+  end
+
+  def test_can_get_budget_id()
+    assert_equal(1, @transaction1.budget_id)
   end
 
   def test_can_get_time()
