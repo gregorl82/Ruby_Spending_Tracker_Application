@@ -1,24 +1,18 @@
 <header>
   <h2><%= @name %></h2>
-  <p>Total spent: £<%="%.2f" % @spent %> Amount remaining: £<%="%.2f" % @remaining %></p>
 </header>
 
-<nav>
-  <ul>
-    <li>Order transactions by date
-      <ul>
-        <li><a href="/budgets/<%= @id %>/asc">Ascending</a></li>
-        <li><a href="/budgets/<%= @id %>/desc">Descending</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
 <main>
+  <p>Budget amount: £<%="%.2f" % @amount %></p>
+  <p>Amount spent: £<%="%.2f" % @spent %></p>
+  <p>Amount remaining: £<%="%.2f" % @remaining %></p>
   <p><a href="/transactions/new">Add new transaction</a></p>
   <hr />
 
   <% if @transactions.count() != 0 %>
+
+  <p><a href="/budgets/<%= @id %>/asc">Ascending</a></p>
+  <p><a href="/budgets/<%= @id %>/desc">Descending</a></p>
 
   <div class="filtered-transactions header">
     <p class="item">Time</p>

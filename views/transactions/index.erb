@@ -4,15 +4,15 @@
 
 <nav>
   <ul>
-    <li>Budgets
-      <ul>
+    <li class="dropdown">View by budget
+      <ul class="dropdown-content">
         <% for budget in @budgets %>
         <li><a href="/budgets/<%= budget.id %>"><%= budget.budget_name %></a></li>
         <% end %>
       </ul>
     </li>
-    <li>Tags
-      <ul>
+    <li class="dropdown">View by tag
+      <ul class="dropdown-content">
         <% for tag in @tags %>
         <li><a href="/transactions/<%= tag.tag_name %>"><%= tag.tag_name%></a></li>
         <% end %>
@@ -48,14 +48,5 @@
     </div>
     <% end %>
 
-  <aside>
-    <nav>
-      <ul>
-        <li><a href="/budgets">Budgets</a></li>
-        <li><a href="/tags">Tags</a></li>
-        <li><a href="/merchants">Merchants</a></li>
-      </ul>
-    </nav>
-  </aside>
-
+    <p><a href="/transactions/new">Add new transaction</a></p>
 </main>

@@ -28,6 +28,7 @@ get '/budgets/:id' do
   budget = Budget.find_by_id(id)
   total_spent = budget.total_spent()
   @id = id
+  @amount = budget.budget_amount
   @name = budget.budget_name
   @remaining = budget.budget_amount - total_spent
   @spent = total_spent
