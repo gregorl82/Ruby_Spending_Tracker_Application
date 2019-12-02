@@ -35,21 +35,14 @@ get '/budgets/:id' do
   erb(:"budgets/show")
 end
 
-get '/budgets/:id/asc' do
-  id = params['id'].to_i()
-  budget = Budget.find_by_id(id)
-  total_spent = budget.total_spent()
-  @id = id
-  @name = budget.budget_name
-  @remaining = budget.budget_amount - total_spent
-  @spent = total_spent
-  transactions = budget.transactions()
-  @transactions = transactions.sort_by! {|transaction| transaction.transaction_time}
-  erb(:"budgets/show")
+get '/budgets/:id/edit' do
+  @budget = Budget.find_by_id(params['id'])
+  erb(:"budgets/edit")
 end
 
-get '/budgets/:id/desc' do
+get '/budgets/:id/:order' do
   id = params['id'].to_i()
+  order = params['order']
   budget = Budget.find_by_id(id)
   total_spent = budget.total_spent()
   @id = id
@@ -57,7 +50,11 @@ get '/budgets/:id/desc' do
   @remaining = budget.budget_amount - total_spent
   @spent = total_spent
   transactions = budget.transactions()
-  @transactions = transactions.sort_by! {|transaction| transaction.transaction_time}.reverse
+  if order == 'asc'
+    @transactions = transactions.sort_by! {|transaction| transaction.transaction_time}
+  elsif order == 'desc'
+    @transactions = transactions.sort_by! {|transaction| transaction.transaction_time}.reverse
+  end
   erb(:"budgets/show")
 end
 
