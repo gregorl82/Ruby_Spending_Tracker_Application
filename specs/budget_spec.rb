@@ -10,7 +10,8 @@ class BudgetTest < MiniTest::Test
     @budget1 = Budget.new(
       {
         'budget_name' => 'Social Fund',
-        'budget_amount' => 300.00
+        'budget_amount' => 300.00,
+        'warning_limit' => 40.00
       }
     )
   end
@@ -23,6 +24,10 @@ class BudgetTest < MiniTest::Test
     assert_equal(300.00, @budget1.budget_amount)
   end
 
+  def test_can_get_warning_limit()
+    assert_equal(40.00, @budget1.warning_limit)
+  end
+
   def test_can_alter_budget_name()
     @budget1.budget_name = 'Takeaway Fund'
     assert_equal('Takeaway Fund', @budget1.budget_name)
@@ -31,6 +36,11 @@ class BudgetTest < MiniTest::Test
   def test_can_alter_budget_amount()
     @budget1.budget_amount = 250.00
     assert_equal(250.00, @budget1.budget_amount)
+  end
+
+  def test_can_alter_warning_limit()
+    @budget1.warning_limit = 30.00
+    assert_equal(30.00, @budget1.warning_limit)
   end
 
 end

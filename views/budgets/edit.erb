@@ -13,6 +13,10 @@
       Budget amount: £
       <input type="number" step="0.01" name="budget_amount" id="budget-amount" value="<%= "%.2f" % @budget.budget_amount %>" required>
     </label>
+    <label for="warning-limit">
+      Set warning limit: £
+      <input type="number" step="0.01" name="warning_limit" id="warning-limit" value="<%= "%.2f" % @budget.warning_limit %>" required>
+    </label>
     <input type="submit" value="Update">
     <a href="/budgets">Cancel</a>
   </form>

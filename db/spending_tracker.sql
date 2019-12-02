@@ -16,7 +16,8 @@ CREATE TABLE tags (
 CREATE TABLE budgets (
   id SERIAL PRIMARY KEY,
   budget_name VARCHAR,
-  budget_amount DECIMAL(15,2)
+  budget_amount DECIMAL(15,2),
+  warning_limit DECIMAL(15,2)
 );
 
 CREATE TABLE transactions (

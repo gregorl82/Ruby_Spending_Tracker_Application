@@ -3,18 +3,19 @@ require_relative('transaction.rb')
 
 class Budget
 
-  attr_accessor :budget_name, :budget_amount
+  attr_accessor :budget_name, :budget_amount, :warning_limit
   attr_reader :id
 
   def initialize(options)
     @id = options['id'].to_i() if options['id']
     @budget_name = options['budget_name']
     @budget_amount = options['budget_amount'].to_f()
+    @warning_limit = options['warning_limit'].to_f()
   end
 
   def save()
-    sql = "INSERT INTO budgets (budget_name, budget_amount) VALUES ($1, $2) RETURNING id"
-    values = [@budget_name, @budget_amount]
+    sql = "INSERT INTO budgets (budget_name, budget_amount, warning_limit) VALUES ($1, $2, $3) RETURNING id"
+    values = [@budget_name, @budget_amount, @warning_limit]
     result = SqlRunner.run(sql, values)
     @id = result[0]['id'].to_i()
   end
@@ -33,8 +34,8 @@ class Budget
   end
 
   def update()
-    sql = "UPDATE budgets SET (budget_name, budget_amount) = ($1, $2) WHERE id = $3"
-    values = [@budget_name, @budget_amount, @id]
+    sql = "UPDATE budgets SET (budget_name, budget_amount, warning_limit) = ($1, $2, $3) WHERE id = $4"
+    values = [@budget_name, @budget_amount, @warning_limit, @id]
     SqlRunner.run(sql, values)
   end
 

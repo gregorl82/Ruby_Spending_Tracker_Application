@@ -66,7 +66,8 @@ tag3.save()
 budget1 = Budget.new(
   {
     'budget_name' => 'Hobbies',
-    'budget_amount' => 300.00
+    'budget_amount' => 300.00,
+    'warning_limit' => 30.00
   }
 )
 
@@ -75,7 +76,8 @@ budget1.save()
 budget2 = Budget.new(
   {
     'budget_name' => 'Christmas shopping',
-    'budget_amount' => 120.00
+    'budget_amount' => 120.00,
+    'warning_limit' => 0.00
   }
 )
 
@@ -84,7 +86,8 @@ budget2.save()
 budget3 = Budget.new(
   {
     'budget_name' => 'Food budget',
-    'budget_amount' => 170.00
+    'budget_amount' => 170.00,
+    'warning_limit' => 25.00
   }
 )
 
