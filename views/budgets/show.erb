@@ -1,6 +1,6 @@
 <header>
-  <h2>Budget name: <%= @name %></h2>
-  <p>Total spent: £<%="%.2f" % @spent %>  Amount remaining: £<%="%.2f" % @remaining %></p>
+  <h2><%= @name %></h2>
+  <p>Total spent: £<%="%.2f" % @spent %> Amount remaining: £<%="%.2f" % @remaining %></p>
 </header>
 
 <nav>
@@ -15,11 +15,12 @@
 </nav>
 
 <main>
+  <p><a href="/transactions/new">Add new transaction</a></p>
   <hr />
   <% if @transactions.count() != 0 %>
 
     <% for transaction in @transactions %>
-      <p><%= transaction.display_date %> <%= transaction.display_time %> </p>
+      <p> <%= transaction.display_time %> <%= transaction.display_date %> </p>
       <p><%= transaction.tag().tag_name %></p>
       <p><%= transaction.merchant().merchant_name %></p>
       <p>£<%= "%.2f" % transaction.amount %></p>

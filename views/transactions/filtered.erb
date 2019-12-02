@@ -7,7 +7,7 @@
   <% if @transactions.count != 0 %>
 
     <% for transaction in @transactions %>
-      <p><%= transaction.display_date %> <%= transaction.display_time %> </p>
+      <p><%= transaction.display_time %> <%= transaction.display_date %> </p>
       <p><%= transaction.merchant().merchant_name %></p>
       <p>£<%= "%.2f" % transaction.amount %></p>
       <p>Budget: <%= transaction.budget().budget_name %></p>

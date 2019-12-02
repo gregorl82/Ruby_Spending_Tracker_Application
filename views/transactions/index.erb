@@ -4,7 +4,7 @@
 
 <nav>
   <ul>
-    <li> Filter view by
+    <li>View by
       <ul>
         <li>Budget
           <ul>
@@ -22,30 +22,36 @@
         </li>
       </ul>
     </li>
-    <li>Manage
+  </ul>
+</nav>
+
+<main>
+  <hr />
+    <% for transaction in @transactions %>
+    <div class="transaction">
+      <p><%= transaction.display_time %> <%= transaction.display_date %> </p>
+      <p><%= transaction.tag().tag_name %></p>
+      <p><%= transaction.merchant().merchant_name %></p>
+      <p>£<%= "%.2f" % transaction.amount %></p>
+      <p><%= transaction.budget().budget_name %></p>
+      <div class="transaction-buttons">
+        <p><a href="/transactions/<%= transaction.id %>/edit">Edit</a></p>
+        <form action="/transactions/<%= transaction.id %>/delete" method="post">
+          <input type="submit" value="Delete">
+        </form>
+      </div>
+    </div>
+    <% end %>
+  </section>
+
+  <aside>
+    <nav>
       <ul>
         <li><a href="/budgets">Budgets</a></li>
         <li><a href="/tags">Tags</a></li>
         <li><a href="/merchants">Merchants</a></li>
       </ul>
-    </li>
-  </ul>
-</nav>
+    </nav>
+  </aside>
 
-<main>
-
-  <p><a href="/transactions/new">Add new transaction</a></p>
-  <hr />
-  <% for transaction in @transactions %>
-    <p><%= transaction.display_date %> <%= transaction.display_time %> </p>
-    <p><%= transaction.tag().tag_name %></p>
-    <p><%= transaction.merchant().merchant_name %></p>
-    <p>£<%= "%.2f" % transaction.amount %></p>
-    <p>Budget: <%= transaction.budget().budget_name %></p>
-    <p><a href="/transactions/<%= transaction.id %>/edit">Edit</a></p>
-    <form action="/transactions/<%= transaction.id %>/delete" method="post">
-      <input type="submit" value="Delete">
-    </form>
-    <hr />
-  <% end %>
 </main>
