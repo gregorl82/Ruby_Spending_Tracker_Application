@@ -15,6 +15,8 @@
   <% end %>
 </p>
 
+<p><a href="/transactions/new">Add new transaction</a></p>
+
 <% for transaction in @transactions %>
   <p><%= transaction.display_date %> <%= transaction.display_time %> </p>
   <p><%= transaction.tag().tag_name %></p>
@@ -27,5 +29,3 @@
   </form>
   <hr />
 <% end %>
-
-<a href="/transactions/new">Add new transaction</a>

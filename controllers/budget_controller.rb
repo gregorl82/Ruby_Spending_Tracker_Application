@@ -35,6 +35,12 @@ get '/budgets/:id' do
   erb(:"budgets/show")
 end
 
+post '/budgets/:id' do
+  budget = Budget.new(params)
+  budget.update()
+  redirect to ("/budgets")
+end
+
 get '/budgets/:id/edit' do
   @budget = Budget.find_by_id(params['id'])
   erb(:"budgets/edit")
