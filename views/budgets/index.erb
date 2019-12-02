@@ -7,6 +7,7 @@
   <div class="budgets header">
     <p class="item">Name</p>
     <p class="item">Amount</p>
+    <p class="item">Spending</p>
     <p class="item">Edit</p>
     <p class="item">Delete</p>
   </div>
@@ -16,6 +17,7 @@
     <div class="budgets">
       <p><%= budget.budget_name %></p>
       <p>£<%= "%.2f" % budget.budget_amount %></p>
+      <p>£<%= "%.2f" % budget.total_spent() %></p>
       <p><a href="/budgets/<%= budget.id %>/edit">Edit</a></p>
       <form action="/budgets/<%= budget.id %>/delete" method="POST">
         <input type="submit" value="Delete">
@@ -24,6 +26,8 @@
     <hr />
 
   <% end %>
-  <p><a href="/budgets/new">Create a new budget</a></p>
-  <p><a href="/transactions">Display all transactions</a></p>
+  <div class="add-back-bttns">
+    <p><a href="/budgets/new">Add</a></p>
+    <p><a href="/transactions">Back</a></p>
+  </div>
 </main>
