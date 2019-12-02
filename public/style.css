@@ -18,6 +18,10 @@ nav li {
   display: inline;
 }
 
+main {
+  display: grid;
+}
+
 main a {
   font-size: 11px;
   background-color: rebeccapurple;
@@ -41,17 +45,24 @@ input[type=button], input[type=submit] {
   cursor: pointer;
 }
 
-.transaction {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 150px;
+.transactions {
+  display: grid;
+  grid-template-columns: 2% 1fr 1fr 25% 1fr 1fr 1fr 1fr;
+  text-align: center;
 }
 
-.transaction .buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.transactions.header {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.filtered-transactions {
+  display: grid;
+  grid-template-columns: 5% 1fr 25% 1fr 1fr 1fr 1fr;
+  text-align: center;
+}
+
+.filtered-transactions.header {
+  font-weight: bold;
+  font-style: 20px;
 }

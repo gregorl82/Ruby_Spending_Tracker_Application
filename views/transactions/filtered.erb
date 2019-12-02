@@ -6,12 +6,28 @@
 
   <% if @transactions.count != 0 %>
 
+    <div class="filtered-transactions header">
+      <p class="item">Time</p>
+      <p class="item">Date</p>
+      <p class="item">Merchant</p>
+      <p class="item">Amount</p>
+      <p class="item">Budget</p>
+      <p class="item">Edit</p>
+      <p class="item">Delete</p>
+    </div>
+
     <% for transaction in @transactions %>
-      <p><%= transaction.display_time %> <%= transaction.display_date %> </p>
-      <p><%= transaction.merchant().merchant_name %></p>
-      <p>£<%= "%.2f" % transaction.amount %></p>
-      <p>Budget: <%= transaction.budget().budget_name %></p>
-      <hr />
+    <div class="filtered-transactions">
+      <p class="item"><%= transaction.display_time %></p>
+      <p class="item"><%= transaction.display_date %></p>
+      <p class="item"><%= transaction.merchant().merchant_name %></p>
+      <p class="item">£<%= "%.2f" % transaction.amount %></p>
+      <p class="item"><%= transaction.budget().budget_name %></p>
+      <p><a href="/transactions/<%= transaction.id %>/edit">Edit</a></p>
+      <form action="/transactions/<%= transaction.id %>/delete" method="post">
+        <input type="submit" value="Delete">
+      </form>
+    </div>
     <% end %>
 
   <% else %>

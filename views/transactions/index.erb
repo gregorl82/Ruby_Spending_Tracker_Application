@@ -4,45 +4,49 @@
 
 <nav>
   <ul>
-    <li>View by
+    <li>Budgets
       <ul>
-        <li>Budget
-          <ul>
-            <% for budget in @budgets %>
-            <li><a href="/budgets/<%= budget.id %>"><%= budget.budget_name %></a></li>
-            <% end %>
-          </ul>
-        </li>
-        <li>Tag
-          <ul>
-            <% for tag in @tags %>
-            <li><a href="/transactions/<%= tag.tag_name %>"><%= tag.tag_name%></a></li>
-            <% end %>
-          </ul>
-        </li>
+        <% for budget in @budgets %>
+        <li><a href="/budgets/<%= budget.id %>"><%= budget.budget_name %></a></li>
+        <% end %>
+      </ul>
+    </li>
+    <li>Tags
+      <ul>
+        <% for tag in @tags %>
+        <li><a href="/transactions/<%= tag.tag_name %>"><%= tag.tag_name%></a></li>
+        <% end %>
       </ul>
     </li>
   </ul>
 </nav>
 
 <main>
-  <hr />
-    <% for transaction in @transactions %>
-    <div class="transaction">
-      <p><%= transaction.display_time %> <%= transaction.display_date %> </p>
-      <p><%= transaction.tag().tag_name %></p>
-      <p><%= transaction.merchant().merchant_name %></p>
-      <p>£<%= "%.2f" % transaction.amount %></p>
-      <p><%= transaction.budget().budget_name %></p>
-      <div class="transaction-buttons">
-        <p><a href="/transactions/<%= transaction.id %>/edit">Edit</a></p>
-        <form action="/transactions/<%= transaction.id %>/delete" method="post">
-          <input type="submit" value="Delete">
-        </form>
-      </div>
+  <div class="transactions header">
+    <p class="item">Time</p>
+    <p class="item">Date</p>
+    <p class="item">Tag</p>
+    <p class="item">Merchant</p>
+    <p class="item">Amount</p>
+    <p class="item">Budget</p>
+    <p class="item">Edit</p>
+    <p class="item">Delete</p>
+  </div>
+
+  <% for transaction in @transactions %>
+  <div class="transactions">
+    <p class="item"><%= transaction.display_time %></p>
+    <p class="item"><%= transaction.display_date %> </p>
+    <p class="item"><%= transaction.tag().tag_name %></p>
+    <p class="item"><%= transaction.merchant().merchant_name %></p>
+    <p class="item">£<%= "%.2f" % transaction.amount %></p>
+    <p class="item"><%= transaction.budget().budget_name %></p>
+      <p><a href="/transactions/<%= transaction.id %>/edit">Edit</a></p>
+      <form action="/transactions/<%= transaction.id %>/delete" method="post">
+        <input type="submit" value="Delete">
+      </form>
     </div>
     <% end %>
-  </section>
 
   <aside>
     <nav>
