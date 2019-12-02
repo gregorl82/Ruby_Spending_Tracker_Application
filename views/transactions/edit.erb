@@ -7,6 +7,9 @@
     <input type="datetime-local" name="transaction_time" value="<%= @transaction.prepopulate_datetime %>" required>
   </label>
 
+  <br>
+  <br>
+
   <label for="tag-id">
     Select a tag:
     <select name="tag_id" id="tag-id">
@@ -36,6 +39,24 @@
     </select>
     <a href="/merchants">Manage merchants</a>
   </label>
+
+  <label for="budget-id">
+    Select a budget:
+    <select name="budget_id" id="budget-id">
+      <% for budget in @budgets %>
+      <option value="<%= budget.id %>"
+        <% if (@transaction.budget().budget_name == budget.budget_name) %>
+        <%= "selected" %>
+        <% end %>>
+        <%= budget.budget_name %>
+      </option>
+      <% end %>
+    </select>
+    <a href="/budgets">Manage budgets</a>
+  </label>
+
+  <br>
+  <br>
 
   <label for="amount">
     Enter an amount: £

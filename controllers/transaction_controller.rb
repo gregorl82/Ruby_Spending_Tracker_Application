@@ -38,6 +38,7 @@ get '/transactions/:id/edit' do
   @tags = Tag.all()
   @budgets = Budget.all()
   @merchants = Merchant.all()
+  @budgets = Budget.all()
   @transaction = Transaction.find_by_id(params[:id])
   erb(:"transactions/edit")
 end
