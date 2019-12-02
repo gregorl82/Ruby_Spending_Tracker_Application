@@ -1,19 +1,25 @@
-<h2>Transactions for category: <%= @tag %></h2>
+<header>
+  <h2>Transactions for category: <%= @tag %></h2>
+</header>
 
-<% if @transactions.count != 0 %>
+<main>
 
-  <% for transaction in @transactions %>
-    <p><%= transaction.display_date %> <%= transaction.display_time %> </p>
-    <p><%= transaction.merchant().merchant_name %></p>
-    <p>£<%= "%.2f" % transaction.amount %></p>
-    <p>Budget: <%= transaction.budget().budget_name %></p>
-    <hr />
+  <% if @transactions.count != 0 %>
+
+    <% for transaction in @transactions %>
+      <p><%= transaction.display_date %> <%= transaction.display_time %> </p>
+      <p><%= transaction.merchant().merchant_name %></p>
+      <p>£<%= "%.2f" % transaction.amount %></p>
+      <p>Budget: <%= transaction.budget().budget_name %></p>
+      <hr />
+    <% end %>
+
+  <% else %>
+
+    <p>No transactions to display</p>
+
   <% end %>
 
-<% else %>
+  <p><a href="/transactions">Back to transactions</a></p>
 
-  <p>No transactions to display</p>
-
-<% end %>
-
-<p><a href="/transactions">Back to transactions</a></p>
+</main>

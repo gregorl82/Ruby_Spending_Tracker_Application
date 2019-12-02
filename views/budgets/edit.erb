@@ -1,14 +1,20 @@
-<h2>Edit budget</h2>
+<header>
+  <h2>Edit budget</h2>
+</header>
 
-<form action="/budgets/<%= @budget.id %>" method="POST">
-  <label for="budget-name">
-    Budget name:
-    <input type="text" name="budget_name" id="budget-name" value="<%= @budget.budget_name %>" required>
-  </label>
-  <label for="budget-amount">
-    Budget amount: £
-    <input type="number" step="0.01" name="budget_amount" id="budget-amount" value="<%= "%.2f" % @budget.budget_amount %>" required>
-  </label>
-  <input type="submit" value="Update">
-  <a href="/budgets">Cancel</a>
-</form>
+<main>
+
+  <form action="/budgets/<%= @budget.id %>" method="POST">
+    <label for="budget-name">
+      Budget name:
+      <input type="text" name="budget_name" id="budget-name" value="<%= @budget.budget_name %>" required>
+    </label>
+    <label for="budget-amount">
+      Budget amount: £
+      <input type="number" step="0.01" name="budget_amount" id="budget-amount" value="<%= "%.2f" % @budget.budget_amount %>" required>
+    </label>
+    <input type="submit" value="Update">
+    <a href="/budgets">Cancel</a>
+  </form>
+
+</main>

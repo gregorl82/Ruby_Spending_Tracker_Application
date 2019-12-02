@@ -1,11 +1,15 @@
-<h2>Edit tag</h2>
+<header>
+  <h2>Edit tag</h2>
+</header>
 
-<form action="/tags/<%= @tag.id %>" method="post">
-  <label for="tag-name">
-    Enter a new tag:
-    <input type="text" id="tag-name" name="tag_name" value="<%= @tag.tag_name %>" required>
-  </label>
+<main>
+  <form action="/tags/<%= @tag.id %>" method="post">
+    <label for="tag-name">
+      Enter a new tag:
+      <input type="text" id="tag-name" name="tag_name" value="<%= @tag.tag_name %>" required>
+    </label>
 
-  <input type="submit" value="Update">
-  <a href="/tags">Cancel</a>
-</form>
+    <input type="submit" value="Update">
+    <a href="/tags">Cancel</a>
+  </form>
+</main>

@@ -1,14 +1,18 @@
-<h2>Tags</h2>
+<header>
+  <h2>Tags</h2>
+</header>
 
-<% for tag in @tags %>
-  <p>
-    <%= tag.tag_name %>
-    <a href="/tags/<%= tag.id %>/edit">Edit</a>
-    <form action="/tags/<%= tag.id %>/delete" method="post">
-      <input type="submit" value="Delete">
-    </form>
-  </p>
-  <hr />
-<% end %>
+<main>
+  <% for tag in @tags %>
+    <p>
+      <%= tag.tag_name %>
+      <a href="/tags/<%= tag.id %>/edit">Edit</a>
+      <form action="/tags/<%= tag.id %>/delete" method="post">
+        <input type="submit" value="Delete">
+      </form>
+    </p>
+    <hr />
+  <% end %>
 
-<p><a href="/tags/new">Add</a> <a href="/transactions/new">Back</a></p>
+  <p><a href="/tags/new">Add</a> <a href="/transactions/new">Back</a></p>
+</main>

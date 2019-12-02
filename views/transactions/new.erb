@@ -1,52 +1,56 @@
-<h1>Add new transaction</h1>
+<header>
+  <h1>Add new transaction</h1>
+</header>
 
-<form action="/transactions" method="post">
-  <label for="transaction-time">
-    Select a time and date:
-    <input type="datetime-local" name="transaction_time">
-  </label>
+<main>
+  <form action="/transactions" method="post">
+    <label for="transaction-time">
+      Select a time and date:
+      <input type="datetime-local" name="transaction_time">
+    </label>
 
-  <br>
-  <br>
-  
-  <label for="tag-id">
-    Select a tag:
-    <select name="tag_id" id="tag-id">
-      <% for tag in @tags %>
-      <option value="<%= tag.id %>"><%= tag.tag_name %></option>
-      <% end %>
-    </select>
-  </label>
-  <a href="/tags">Manage tags</a>
+    <br>
+    <br>
 
-  <label for="merchant-id">
-    Select a merchant:
-    <select name="merchant_id" id="merchant-id">
-      <% for merchant in @merchants %>
-      <option value="<%= merchant.id %>"><%= merchant.merchant_name %></option>
-      <% end %>
-    </select>
-  </label>
-  <a href="/merchants">Manage merchants</a>
+    <label for="tag-id">
+      Select a tag:
+      <select name="tag_id" id="tag-id">
+        <% for tag in @tags %>
+        <option value="<%= tag.id %>"><%= tag.tag_name %></option>
+        <% end %>
+      </select>
+    </label>
+    <a href="/tags">Manage tags</a>
 
-  <label for="budget-id">
-    Select a budget:
-    <select name="budget_id" id="budget-id">
-      <% for budget in @budgets %>
-      <option value="<%= budget.id %>"><%= budget.budget_name %></option>
-      <% end %>
-    </select>
-  </label>
-  <a href="/budgets">Manage budgets</a>
+    <label for="merchant-id">
+      Select a merchant:
+      <select name="merchant_id" id="merchant-id">
+        <% for merchant in @merchants %>
+        <option value="<%= merchant.id %>"><%= merchant.merchant_name %></option>
+        <% end %>
+      </select>
+    </label>
+    <a href="/merchants">Manage merchants</a>
 
-  <br>
-  <br>
+    <label for="budget-id">
+      Select a budget:
+      <select name="budget_id" id="budget-id">
+        <% for budget in @budgets %>
+        <option value="<%= budget.id %>"><%= budget.budget_name %></option>
+        <% end %>
+      </select>
+    </label>
+    <a href="/budgets">Manage budgets</a>
 
-  <label for="amount">
-    Enter an amount: £
-    <input type="number" name="amount" step="0.01" required>
-  </label>
+    <br>
+    <br>
 
-  <input type="submit" value="Add">
-  <a href="/transactions">Cancel</a>
-</form>
+    <label for="amount">
+      Enter an amount: £
+      <input type="number" name="amount" step="0.01" required>
+    </label>
+
+    <input type="submit" value="Add">
+    <a href="/transactions">Cancel</a>
+  </form>
+</main>

@@ -1,68 +1,72 @@
-<h1>Edit transaction</h1>
+<header>
+  <h1>Edit transaction</h1>
+</header>
 
-<form action="/transactions/<%= @transaction.id %>" method="post">
+<main>
+  <form action="/transactions/<%= @transaction.id %>" method="post">
 
-  <label for="transaction-time">
-    Select a time and date:
-    <input type="datetime-local" name="transaction_time" value="<%= @transaction.prepopulate_datetime %>" required>
-  </label>
+    <label for="transaction-time">
+      Select a time and date:
+      <input type="datetime-local" name="transaction_time" value="<%= @transaction.prepopulate_datetime %>" required>
+    </label>
 
-  <br>
-  <br>
+    <br>
+    <br>
 
-  <label for="tag-id">
-    Select a tag:
-    <select name="tag_id" id="tag-id">
-      <% for tag in @tags %>
-      <option value="<%= tag.id %>"
-        <% if (@transaction.tag().tag_name == tag.tag_name) %>
-        <%= "selected" %>
-        <% end %>>
-        <%= tag.tag_name %>
-      </option>
-      <% end %>
-    </select>
-    <a href="/tags">Manage tags</a>
-  </label>
+    <label for="tag-id">
+      Select a tag:
+      <select name="tag_id" id="tag-id">
+        <% for tag in @tags %>
+        <option value="<%= tag.id %>"
+          <% if (@transaction.tag().tag_name == tag.tag_name) %>
+          <%= "selected" %>
+          <% end %>>
+          <%= tag.tag_name %>
+        </option>
+        <% end %>
+      </select>
+      <a href="/tags">Manage tags</a>
+    </label>
 
-  <label for="merchant-id">
-    Select a merchant:
-    <select name="merchant_id" id="merchant-id">
-      <% for merchant in @merchants %>
-      <option value="<%= merchant.id %>"
-        <% if (@transaction.merchant().merchant_name == merchant.merchant_name) %>
-        <%= "selected" %>
-        <% end %>>
-        <%= merchant.merchant_name %>
-      </option>
-      <% end %>
-    </select>
-    <a href="/merchants">Manage merchants</a>
-  </label>
+    <label for="merchant-id">
+      Select a merchant:
+      <select name="merchant_id" id="merchant-id">
+        <% for merchant in @merchants %>
+        <option value="<%= merchant.id %>"
+          <% if (@transaction.merchant().merchant_name == merchant.merchant_name) %>
+          <%= "selected" %>
+          <% end %>>
+          <%= merchant.merchant_name %>
+        </option>
+        <% end %>
+      </select>
+      <a href="/merchants">Manage merchants</a>
+    </label>
 
-  <label for="budget-id">
-    Select a budget:
-    <select name="budget_id" id="budget-id">
-      <% for budget in @budgets %>
-      <option value="<%= budget.id %>"
-        <% if (@transaction.budget().budget_name == budget.budget_name) %>
-        <%= "selected" %>
-        <% end %>>
-        <%= budget.budget_name %>
-      </option>
-      <% end %>
-    </select>
-    <a href="/budgets">Manage budgets</a>
-  </label>
+    <label for="budget-id">
+      Select a budget:
+      <select name="budget_id" id="budget-id">
+        <% for budget in @budgets %>
+        <option value="<%= budget.id %>"
+          <% if (@transaction.budget().budget_name == budget.budget_name) %>
+          <%= "selected" %>
+          <% end %>>
+          <%= budget.budget_name %>
+        </option>
+        <% end %>
+      </select>
+      <a href="/budgets">Manage budgets</a>
+    </label>
 
-  <br>
-  <br>
+    <br>
+    <br>
 
-  <label for="amount">
-    Enter an amount: £
-    <input type="number" name="amount" step="0.01" value="<%= "%.2f" % @transaction.amount %>" required>
-  </label>
+    <label for="amount">
+      Enter an amount: £
+      <input type="number" name="amount" step="0.01" value="<%= "%.2f" % @transaction.amount %>" required>
+    </label>
 
-  <input type="submit" value="Update">
-  <a href="/transactions">Cancel</a>
-</form>
+    <input type="submit" value="Update">
+    <a href="/transactions">Cancel</a>
+  </form>
+</main>

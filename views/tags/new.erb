@@ -1,11 +1,17 @@
-<h2>Add new tag</h2>
+<header>
+  <h2>Add new tag</h2>
+</header>
 
-<form action="/tags" method="POST">
-  <label for="tag-name">
-    Enter a new tag:
-    <input type="text" id="tag-name" name="tag_name" required>
-  </label>
+<main>
 
-  <input type="submit" value="Add">
-  <a href="/tags">Cancel</a>
-</form>
+  <form action="/tags" method="POST">
+    <label for="tag-name">
+      Enter a new tag:
+      <input type="text" id="tag-name" name="tag_name" required>
+    </label>
+
+    <input type="submit" value="Add">
+    <a href="/tags">Cancel</a>
+  </form>
+
+</main>
