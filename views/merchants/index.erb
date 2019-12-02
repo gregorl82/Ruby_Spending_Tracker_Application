@@ -3,18 +3,26 @@
 </header>
 
 <main>
-  
+  <div class="merchants header">
+    <p>Name</p>
+    <p>Edit</p>
+    <p>Delete</p>
+  </div>
+
   <% for merchant in @merchants %>
-    <p>
-      <%= merchant.merchant_name %>
-      <a href="/merchants/<%= merchant.id %>/edit">Edit</a>
+  <div class="merchants">
+    <p><%= merchant.merchant_name %></p>
+    <p><a href="/merchants/<%= merchant.id %>/edit">Edit</a></p>
       <form action="/merchants/<%= merchant.id %>/delete" method="post">
         <input type="submit" value="Delete">
       </form>
-    </p>
+  </div>
+
     <hr />
   <% end %>
 
-  <p><a href="/merchants/new">Add</a> <a href="/transactions/new">Back</a> </p>
-
+  <div class="add-back-bttns">
+    <p><a href="/merchants/new">Add</a></p>
+    <p><a href="/transactions/new">Back</a></p>
+  </div>
 </main>

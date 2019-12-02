@@ -3,16 +3,25 @@
 </header>
 
 <main>
+  <div class="tags header">
+    <p>Name</p>
+    <p>Edit</p>
+    <p>Delete</p>
+  </div>
+
   <% for tag in @tags %>
-    <p>
-      <%= tag.tag_name %>
-      <a href="/tags/<%= tag.id %>/edit">Edit</a>
-      <form action="/tags/<%= tag.id %>/delete" method="post">
-        <input type="submit" value="Delete">
-      </form>
-    </p>
+  <div class="tags">
+    <p><%= tag.tag_name %></p>
+    <p><a href="/tags/<%= tag.id %>/edit">Edit</a></p>
+    <form action="/tags/<%= tag.id %>/delete" method="post">
+      <input type="submit" value="Delete">
+    </form>
+  </div>
+
     <hr />
   <% end %>
-
-  <p><a href="/tags/new">Add</a> <a href="/transactions/new">Back</a></p>
+  <div class="add-back-bttns">
+    <p><a href="/tags/new">Add</a></p>
+    <p><a href="/transactions/new">Back</a></p>    
+  </div>
 </main>
