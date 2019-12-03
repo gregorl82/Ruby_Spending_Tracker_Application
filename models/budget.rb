@@ -1,5 +1,6 @@
 require_relative('../db/sql_runner.rb')
 require_relative('transaction.rb')
+require_relative('tag.rb')
 
 class Budget
 
@@ -74,6 +75,25 @@ class Budget
     values = [@id]
     result = SqlRunner.run(sql, values)
     return result[0]['sum'].to_f()
+  end
+
+  # method to get amount remaining for a budget
+
+  def amount_remaining()
+    spent = total_spent()
+    remaining = @budget_amount - spent
+    return remaining
+  end
+
+  # method to check remaining budget is below warning limit
+
+  def reached_warning_limit?()
+    remaining = amount_remaining()
+    if (remaining < @warning_limit)
+      return true
+    else
+      return false
+    end
   end
 
 end
