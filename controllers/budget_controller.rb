@@ -51,12 +51,12 @@ get '/budgets/:id/:order' do
   id = params['id'].to_i()
   order = params['order']
   budget = Budget.find_by_id(id)
-  total_spent = budget.total_spent()
   @id = id
   @amount = budget.budget_amount
   @name = budget.budget_name
-  @remaining = budget.budget_amount - total_spent
-  @spent = total_spent
+  @remaining = budget.amount_remaining()
+  @spent = budget.total_spent()
+  @limit = budget.reached_warning_limit?()
   transactions = budget.transactions()
   if order == 'asc'
     @transactions = transactions.sort_by! {|transaction| transaction.transaction_time}

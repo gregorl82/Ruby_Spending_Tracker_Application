@@ -47,7 +47,9 @@
         </a>
       </p>
       <form action="/transactions/<%= transaction.id %>/delete" method="post">
-        <input type="submit" value="Delete">
+        <button type="submit" style="border: 0; background: transparent">
+        <img src="/icons/delete.png" height="38px" alt="submit">
+        </button>
       </form>
     </div>
     <% end %>

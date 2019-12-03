@@ -37,13 +37,15 @@
         </a>
       </p>
       <form action="/budgets/<%= budget.id %>/delete" method="POST">
-        <input type="submit" value="Delete">
+        <button type="submit" style="border: 0; background: transparent">
+        <img src="/icons/delete.png" height="38px" alt="submit">
+        </button>
       </form>
     </div>
 
   <% end %>
   <div class="add-back-bttns">
-    <p><a href="/budgets/new">Add</a></p>
+    <p><a href="/budgets/new">Create Budget</a></p>
     <p><a href="/transactions">Back</a></p>
   </div>
 </main>
