@@ -4,12 +4,14 @@ require('pry')
 require_relative('../models/transaction.rb')
 require_relative('../models/tag.rb')
 require_relative('../models/merchant.rb')
+require_relative('../models/month.rb')
 also_reload('../models/*')
 
 get '/transactions' do
   @tags = Tag.all()
   @budgets = Budget.all()
   @total = Transaction.total()
+  @months = Month.all()
   transactions = Transaction.all()
   @transactions = transactions.sort_by! {|transaction| transaction.id}
   erb(:"transactions/index")
@@ -56,6 +58,7 @@ end
 
 get '/transactions/order/:order' do
   order = params['order']
+  @months = Month.all()
   @tags = Tag.all()
   @budgets = Budget.all()
   @total = Transaction.total()
@@ -68,15 +71,11 @@ get '/transactions/order/:order' do
   erb(:"transactions/index")
 end
 
-get '/transactions/orderbytag/:tag/:order' do
-  order = params['order']
-  @tag = params['tag']
-  transactions = Transaction.filter_by_tag(params['tag'])
-  if (order == 'asc')
-    @transactions = transactions.sort_by! {|transaction| transaction.transaction_time}
-  elsif (order == 'desc')
-    @transactions = transactions.sort_by! {|transaction| transaction.transaction_time}.reverse
-  end
+get '/transactions/month/:month' do
+  month = params['month']
+  @tag = month
+  transactions = Transaction.all()
+  @transactions = Transaction.get_transactions_by_month(transactions, month)
   @total = Transaction.get_total(@transactions)
   erb(:"transactions/filtered")
 end

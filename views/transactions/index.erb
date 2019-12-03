@@ -7,7 +7,7 @@
 <nav>
   <ul>
     <li class="dropdown">
-      <img src="/icons/date.png" alt="edit" height="25px">
+      <img src="/icons/sort.png" alt="edit" height="25px">
       Order by date
       <ul class="dropdown-content">
         <li><a href="/transactions/order/asc">Ascending</a></li>
@@ -29,6 +29,15 @@
       <ul class="dropdown-content">
         <% for tag in @tags %>
         <li><a href="/transactions/<%= tag.tag_name %>"><%= tag.tag_name%></a></li>
+        <% end %>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <img src="/icons/date.png" alt="edit" height="25px">
+      View by month
+      <ul class="dropdown-content">
+        <% for month in @months %>
+        <li><a href="/transactions/month/<%= month %>"><%= month %></a></li>
         <% end %>
       </ul>
     </li>
