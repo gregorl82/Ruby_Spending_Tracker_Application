@@ -1,17 +1,23 @@
 <header>
-  <h2>Add new merchant</h2>
+  <h2>
+    <img src="/icons/add_outline.png" alt="add" height="40px">
+    Add new merchant
+  </h2>
 </header>
 
 <main>
 
   <form action="/merchants" method="post">
     <label for="merchant-name">
-      Enter a new merchant:
+      Enter merchant name:
       <input type="text" id="merchant-name" name="merchant_name" required>
     </label>
 
+    <br>
+    <br>
+
     <input type="submit" value="Add">
-    <a href="/merchants">Cancel</a>
+    <a href="/transactions">Cancel</a>
   </form>
 
 </main>

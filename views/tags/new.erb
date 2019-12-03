@@ -1,17 +1,23 @@
 <header>
-  <h2>Add new tag</h2>
+  <h2>
+    <img src="/icons/add_outline.png" alt="add" height="40px">
+    Add new tag
+  </h2>
 </header>
 
 <main>
 
   <form action="/tags" method="POST">
     <label for="tag-name">
-      Enter a new tag:
+      Enter tag name:
       <input type="text" id="tag-name" name="tag_name" required>
     </label>
 
+    <br>
+    <br>
+
     <input type="submit" value="Add">
-    <a href="/tags">Cancel</a>
+    <a href="/transactions">Cancel</a>
   </form>
 
 </main>

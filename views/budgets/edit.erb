@@ -1,5 +1,8 @@
 <header>
-  <h2>Edit budget</h2>
+  <h2>
+    <img src="/icons/edit.png" alt="edit" height="40px">
+    Edit budget
+  </h2>
 </header>
 
 <main>
@@ -17,8 +20,12 @@
       Set warning limit: £
       <input type="number" step="0.01" name="warning_limit" id="warning-limit" value="<%= "%.2f" % @budget.warning_limit %>" required>
     </label>
+
+    <br>
+    <br>
+
     <input type="submit" value="Update">
-    <a href="/budgets">Cancel</a>
+    <a href="/transactions">Cancel</a>
   </form>
 
 </main>

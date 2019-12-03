@@ -11,15 +11,29 @@ header {
   font-size: 35px;
 }
 
-p, li, form, input, option, h4 {
+h1 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 120px;
+  font-weight: bold;
+  text-align: center;
+  height: 250px;
+}
+
+p, li, option, h4 {
   font-family: 'Oswald', sans-serif;
   font-size: 20px;
 }
 
-h4 {
-  text-align: left;
-  margin-bottom: 0px;
-  font-size: 20px;
+form, label, input, select {
+  font-family: 'Oswald', sans-serif;
+  padding: 10px;
+  text-align: center;
+  font-size: 25px;
+}
+
+main p a,
+form a {
+  text-decoration: none;
 }
 
 button {
@@ -189,7 +203,7 @@ p#warning-message {
   color: white;
 }
 
-#new-trans-bttn {
+#new-trans-bttn, #enter-bttn {
   font-size: 11px;
   background-color: rebeccapurple;
   border: none;
@@ -200,7 +214,8 @@ p#warning-message {
   text-align: center;
 }
 
-#new-trans-bttn a {
+#new-trans-bttn a,
+#enter-bttn a {
   text-decoration: none;
   color: white;
   font-size: 24px;

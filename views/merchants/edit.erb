@@ -1,5 +1,8 @@
 <header>
-  <h2>Edit merchant</h2>
+  <h2>
+    <img src="/icons/edit.png" alt="edit" height="40px">
+    Edit merchant
+  </h2>
 </header>
 
 
@@ -7,12 +10,12 @@
 
   <form action="/merchants/<%= @merchant.id %>" method="post">
     <label for="merchant-name">
-      Enter a new merchant:
+      Enter merchant name:
       <input type="text" id="merchant-name" name="merchant_name" value="<%= @merchant.merchant_name %>" required>
     </label>
 
     <input type="submit" value="Update">
-    <a href="/merchants">Cancel</a>
+    <a href="/transactions">Cancel</a>
   </form>
 
 </main>

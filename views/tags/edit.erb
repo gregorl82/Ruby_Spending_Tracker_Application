@@ -1,15 +1,21 @@
 <header>
-  <h2>Edit tag</h2>
+  <h2>
+    <img src="/icons/edit.png" alt="edit" height="40px">
+    Edit tag
+  </h2>
 </header>
 
 <main>
   <form action="/tags/<%= @tag.id %>" method="post">
     <label for="tag-name">
-      Enter a new tag:
+      Enter tag name:
       <input type="text" id="tag-name" name="tag_name" value="<%= @tag.tag_name %>" required>
     </label>
 
+    <br>
+    <br>
+
     <input type="submit" value="Update">
-    <a href="/tags">Cancel</a>
+    <a href="/transactions">Cancel</a>
   </form>
 </main>

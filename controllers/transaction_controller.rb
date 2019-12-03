@@ -31,6 +31,7 @@ end
 get '/transactions/:tag' do
   @tag = params['tag']
   @transactions = Transaction.filter_by_tag(params['tag'])
+  @total = Transaction.get_total(@transactions)
   erb(:"transactions/filtered")
 end
 
@@ -76,5 +77,6 @@ get '/transactions/orderbytag/:tag/:order' do
   elsif (order == 'desc')
     @transactions = transactions.sort_by! {|transaction| transaction.transaction_time}.reverse
   end
+  @total = Transaction.get_total(@transactions)
   erb(:"transactions/filtered")
 end

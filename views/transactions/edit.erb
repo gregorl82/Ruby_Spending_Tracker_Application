@@ -1,5 +1,8 @@
 <header>
-  <h1>Edit transaction</h1>
+  <h2>
+    <img src="/icons/edit.png" alt="edit" height="40px">
+    Edit transaction
+  </h2>
 </header>
 
 <main>
@@ -63,14 +66,11 @@
       <input type="number" name="amount" step="0.01" value="<%= "%.2f" % @transaction.amount %>" required>
     </label>
 
+    <br>
+    <br>
+
     <input type="submit" value="Update">
     <a href="/transactions">Cancel</a>
   </form>
 
-  <h4>Manage:</h4>
-  <p class="manage-bttns">
-    <a href="/budgets">Budgets</a>
-    <a href="/tags">Tags</a>
-    <a href="/merchants">Merchants</a>
-  </p>
 </main>

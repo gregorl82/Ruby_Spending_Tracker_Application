@@ -125,6 +125,8 @@ class Transaction
     return transactions.map {|transaction| Transaction.new(transaction)}
   end
 
+  # class level method to filter transactions by tag
+
   def self.filter_by_tag(tag_name)
     sql = "SELECT transactions.*
       FROM transactions
@@ -134,6 +136,12 @@ class Transaction
     values = [tag_name]
     transactions = SqlRunner.run(sql, values)
     return transactions.map {|transaction| Transaction.new(transaction)}
+  end
+
+  # class level method to calculate total from array of transaction objects
+  def self.get_total(transactions)
+    trans_amounts = transactions.map {|transaction| transaction.amount}
+    return trans_amounts.sum().round(2)
   end
 
 #
