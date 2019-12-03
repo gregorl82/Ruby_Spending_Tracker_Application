@@ -1,27 +1,33 @@
 <header>
-  <h2>Budget: <%= @name %></h2>
+  <h2>
+    <img src="/icons/wallet.png" alt="wallet" height="40px">
+    <%= @budget.budget_name %>
+  </h2>
 </header>
 
 <main>
-  <div class="budget-summary">
-    <p>Budget amount: £<%="%.2f" % @amount %></p>
-    <p>Amount spent: £<%="%.2f" % @spent %></p>
-    <p>Amount remaining: £<%="%.2f" % @remaining %></p>
-  </div>
-
-  <% if @limit %>
+  <% if @budget.reached_warning_limit?() %>
   <p id="warning-message">
-    <img src="/icons/warning.png" alt="warning" height="40px">
+    <img src="/icons/warning_white.png" alt="warning" height="25px">
     Budget has reached warning limit!
   </p>
   <% end %>
 
+  <div class="budget-summary">
+    <p>Budget amount: £<%="%.2f" % @budget.budget_amount %></p>
+    <p>Warning limit: £<%="%.2f" % @budget.warning_limit %></p>
+    <p>Amount spent: £<%="%.2f" % @budget.total_spent() %></p>
+    <p>Amount remaining: £<%="%.2f" % @budget.amount_remaining() %></p>
+  </div>
+
   <hr />
 
-  <% if @transactions.count() != 0 %>
+  <% if @budget.transactions() != 0 %>
   <nav>
     <ul>
-      <li class="dropdown">Order by Date
+      <li class="dropdown">
+        <img src="/icons/date.png" alt="edit" height="25px">
+        Order by Date
         <ul class="dropdown-content">
           <li><a href="/budgets/<%= @id %>/asc">Ascending</a></li>
           <li><a href="/budgets/<%= @id %>/desc">Descending</a></li>

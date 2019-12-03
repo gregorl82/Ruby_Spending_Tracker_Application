@@ -1,21 +1,44 @@
 <header>
-  <h2>Total: £<%= "%.2f" % @total %></h2>
+  <h2>
+    <img src="/icons/balance.png" alt="balance" height="40px">
+      Total: £<%= "%.2f" % @total %></h2>
 </header>
 
 <nav>
   <ul>
-    <li class="dropdown">View by budget
+    <li class="dropdown">
+      <img src="/icons/date.png" alt="edit" height="25px">
+      Order by date
+      <ul class="dropdown-content">
+        <li><a href="/transactions/order/asc">Ascending</a></li>
+        <li><a href="/transactions/order/desc">Descending</a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <img src="/icons/wallet.png" alt="edit" height="25px">
+      View by budget
       <ul class="dropdown-content">
         <% for budget in @budgets %>
         <li><a href="/budgets/<%= budget.id %>"><%= budget.budget_name %></a></li>
         <% end %>
       </ul>
     </li>
-    <li class="dropdown">View by tag
+    <li class="dropdown">
+      <img src="/icons/tag.png" alt="edit" height="25px">
+      View by tag
       <ul class="dropdown-content">
         <% for tag in @tags %>
         <li><a href="/transactions/<%= tag.tag_name %>"><%= tag.tag_name%></a></li>
         <% end %>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <img src="/icons/edit.png" alt="edit" height="25px">
+      Add/Remove
+      <ul class="dropdown-content">
+        <li><a href="/budgets">Budgets</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/merchants">Merchants</a></li>
       </ul>
     </li>
   </ul>
@@ -55,10 +78,5 @@
     <% end %>
 
     <p id="new-trans-bttn"><a href="/transactions/new">Add new transaction</a></p>
-    <h4>Manage:</h4>
-    <p class="manage-bttns">
-      <a href="/budgets">Budgets</a>
-      <a href="/tags">Tags</a>
-      <a href="/merchants">Merchants</a>
-    </p>
+
 </main>

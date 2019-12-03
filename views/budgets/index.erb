@@ -1,17 +1,8 @@
 <header>
-  <h2><img src="/icons/wallet.png" alt="wallet" height="40px"> Budgets</h2>
+  <h2><img src="/icons/wallet.png" alt="wallet" height="40px"> Add/Remove Budgets</h2>
 </header>
 
 <main>
-
-  <% for budget in @budgets %>
-    <% if budget.reached_warning_limit? %>
-      <p>
-        <img src="/icons/warning.png" alt="warning" height="30px">
-        Budget '<%= budget.budget_name %>' has exceeded warning limit!
-      </p>
-    <% end %>
-  <% end %>
 
   <div class="budgets header">
     <p class="item">Name</p>

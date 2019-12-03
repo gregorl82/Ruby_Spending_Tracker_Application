@@ -27,12 +27,8 @@ get '/budgets/:id' do
   id = params['id'].to_i()
   budget = Budget.find_by_id(id)
   @id = id
-  @amount = budget.budget_amount
-  @name = budget.budget_name
-  @remaining = budget.amount_remaining()
-  @spent = budget.total_spent()
+  @budget = budget
   @transactions = budget.transactions()
-  @limit = budget.reached_warning_limit?()
   erb(:"budgets/show")
 end
 
@@ -52,11 +48,7 @@ get '/budgets/:id/:order' do
   order = params['order']
   budget = Budget.find_by_id(id)
   @id = id
-  @amount = budget.budget_amount
-  @name = budget.budget_name
-  @remaining = budget.amount_remaining()
-  @spent = budget.total_spent()
-  @limit = budget.reached_warning_limit?()
+  @budget = budget
   transactions = budget.transactions()
   if order == 'asc'
     @transactions = transactions.sort_by! {|transaction| transaction.transaction_time}

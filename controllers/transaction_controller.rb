@@ -52,3 +52,29 @@ post '/transactions/:id/delete' do
   Transaction.destroy(params[:id])
   redirect to ("/transactions")
 end
+
+get '/transactions/order/:order' do
+  order = params['order']
+  @tags = Tag.all()
+  @budgets = Budget.all()
+  @total = Transaction.total()
+  transactions = Transaction.all()
+  if order == 'asc'
+    @transactions = transactions.sort_by! {|transaction| transaction.id}.reverse
+  elsif order == 'desc'
+    @transactions = transactions.sort_by! {|transaction| transaction.id}
+  end
+  erb(:"transactions/index")
+end
+
+get '/transactions/orderbytag/:tag/:order' do
+  order = params['order']
+  @tag = params['tag']
+  transactions = Transaction.filter_by_tag(params['tag'])
+  if (order == 'asc')
+    @transactions = transactions.sort_by! {|transaction| transaction.transaction_time}
+  elsif (order == 'desc')
+    @transactions = transactions.sort_by! {|transaction| transaction.transaction_time}.reverse
+  end
+  erb(:"transactions/filtered")
+end
