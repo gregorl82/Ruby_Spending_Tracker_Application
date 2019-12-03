@@ -10,9 +10,16 @@
   <hr />
 
   <% if @transactions.count() != 0 %>
-
-  <p><a href="/budgets/<%= @id %>/asc">Ascending</a></p>
-  <p><a href="/budgets/<%= @id %>/desc">Descending</a></p>
+  <nav>
+    <ul>
+      <li class="dropdown">Order by Date
+        <ul class="dropdown-content">
+          <li><a href="/budgets/<%= @id %>/asc">Ascending</a></li>
+          <li><a href="/budgets/<%= @id %>/desc">Descending</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
 
   <div class="filtered-transactions header">
     <p class="item">Time</p>
@@ -46,5 +53,5 @@
 
   <% end %>
 
-  <p><a href="/transactions">Back to transactions</a></p>
+  <p class="manage-bttns"><a href="/transactions">Back to transactions</a></p>
 </main>
