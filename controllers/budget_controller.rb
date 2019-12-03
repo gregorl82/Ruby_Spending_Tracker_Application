@@ -26,13 +26,13 @@ end
 get '/budgets/:id' do
   id = params['id'].to_i()
   budget = Budget.find_by_id(id)
-  total_spent = budget.total_spent()
   @id = id
   @amount = budget.budget_amount
   @name = budget.budget_name
-  @remaining = budget.budget_amount - total_spent
-  @spent = total_spent
+  @remaining = budget.amount_remaining()
+  @spent = budget.total_spent()
   @transactions = budget.transactions()
+  @limit = budget.reached_warning_limit?()
   erb(:"budgets/show")
 end
 

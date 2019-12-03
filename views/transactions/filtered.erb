@@ -23,7 +23,11 @@
       <p class="item"><%= transaction.merchant().merchant_name %></p>
       <p class="item">£<%= "%.2f" % transaction.amount %></p>
       <p class="item"><%= transaction.budget().budget_name %></p>
-      <p><a href="/transactions/<%= transaction.id %>/edit">Edit</a></p>
+      <p>
+        <a href="/transactions/<%= transaction.id %>/edit">
+        <img src="/icons/edit.png" alt="edit" height="40px">
+        </a>
+      </p>
       <form action="/transactions/<%= transaction.id %>/delete" method="post">
         <input type="submit" value="Delete">
       </form>
@@ -36,6 +40,6 @@
 
   <% end %>
 
-  <p><a href="/transactions">Back to transactions</a></p>
+  <p class="manage-bttns"><a href="/transactions">Back to transactions</a></p>
 
 </main>

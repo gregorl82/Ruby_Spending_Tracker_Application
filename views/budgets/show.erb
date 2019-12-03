@@ -1,11 +1,20 @@
 <header>
-  <h2><%= @name %></h2>
+  <h2>Budget: <%= @name %></h2>
 </header>
 
 <main>
-  <p>Budget amount: £<%="%.2f" % @amount %></p>
-  <p>Amount spent: £<%="%.2f" % @spent %></p>
-  <p>Amount remaining: £<%="%.2f" % @remaining %></p>
+  <div class="budget-summary">
+    <p>Budget amount: £<%="%.2f" % @amount %></p>
+    <p>Amount spent: £<%="%.2f" % @spent %></p>
+    <p>Amount remaining: £<%="%.2f" % @remaining %></p>
+  </div>
+
+  <% if @limit %>
+  <p id="warning-message">
+    <img src="/icons/warning.png" alt="warning" height="40px">
+    Reached warning limit!
+  </p>
+  <% end %>
 
   <hr />
 
@@ -38,7 +47,11 @@
       <p class="item"><%= transaction.merchant().merchant_name %></p>
       <p class="item"><%= transaction.tag().tag_name %></p>
       <p class="item">£<%= "%.2f" % transaction.amount %></p>
-      <p><a href="/transactions/<%= transaction.id %>/edit">Edit</a></p>
+      <p>
+        <a href="/transactions/<%= transaction.id %>/edit">
+        <img src="/icons/edit.png" alt="edit" height="40px">
+        </a>
+      </p>
       <form action="/transactions/<%= transaction.id %>/delete" method="post">
         <input type="submit" value="Delete">
       </form>

@@ -4,10 +4,21 @@
 
 <main>
 
+  <% for budget in @budgets %>
+    <% if budget.reached_warning_limit? %>
+      <p>
+        <img src="/icons/warning.png" alt="warning" height="30px">
+        Budget '<%= budget.budget_name %>' has exceeded warning limit!
+      </p>
+    <% end %>
+  <% end %>
+
   <div class="budgets header">
     <p class="item">Name</p>
     <p class="item">Amount</p>
+    <p class="item">Warning Limit</p>
     <p class="item">Current Spending</p>
+    <p class="item">Amount Remaining</p>
     <p class="item">Edit</p>
     <p class="item">Delete</p>
   </div>
@@ -17,7 +28,9 @@
     <div class="budgets">
       <p><%= budget.budget_name %></p>
       <p>£<%= "%.2f" % budget.budget_amount %></p>
+      <p>£<%= "%.2f" % budget.warning_limit %></p>
       <p>£<%= "%.2f" % budget.total_spent() %></p>
+      <p>£<%= "%.2f" % budget.amount_remaining()%></p>
       <p>
         <a href="/budgets/<%= budget.id %>/edit">
         <img src="/icons/edit.png" alt="edit" height="40px">
