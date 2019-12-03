@@ -1,5 +1,5 @@
 <header>
-  <h2>Merchants</h2>
+  <h2><img src="/icons/merchant.png" alt="merchant" height="40px"> Merchants</h2>
 </header>
 
 <main>
@@ -12,13 +12,16 @@
   <% for merchant in @merchants %>
   <div class="merchants">
     <p><%= merchant.merchant_name %></p>
-    <p><a href="/merchants/<%= merchant.id %>/edit">Edit</a></p>
-      <form action="/merchants/<%= merchant.id %>/delete" method="post">
-        <input type="submit" value="Delete">
-      </form>
+    <p>
+      <a href="/merchants/<%= merchant.id %>/edit">
+      <img src="/icons/edit.png" alt="edit" height="40px">
+      </a>
+    </p>
+    <form action="/merchants/<%= merchant.id %>/delete" method="post">
+      <input type="submit" value="Delete">
+    </form>
   </div>
 
-    <hr />
   <% end %>
 
   <div class="add-back-bttns">

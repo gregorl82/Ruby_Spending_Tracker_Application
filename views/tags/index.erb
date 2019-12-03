@@ -1,5 +1,5 @@
 <header>
-  <h2>Tags</h2>
+  <h2><img src="/icons/tag.png" alt="tag" height="40px"> Tags</h2>
 </header>
 
 <main>
@@ -12,7 +12,11 @@
   <% for tag in @tags %>
   <div class="tags">
     <p><%= tag.tag_name %></p>
-    <p><a href="/tags/<%= tag.id %>/edit">Edit</a></p>
+    <p>
+      <a href="/tags/<%= tag.id %>/edit">
+      <img src="/icons/edit.png" alt="edit" height="40px">
+      </a>
+    </p>
     <form action="/tags/<%= tag.id %>/delete" method="post">
       <input type="submit" value="Delete">
     </form>
@@ -22,6 +26,6 @@
   <% end %>
   <div class="add-back-bttns">
     <p><a href="/tags/new">Add</a></p>
-    <p><a href="/transactions/new">Back</a></p>    
+    <p><a href="/transactions/new">Back</a></p>
   </div>
 </main>
