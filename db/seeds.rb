@@ -35,6 +35,20 @@ merchant3 = Merchant.new(
 
 merchant3.save()
 
+merchant4 = Merchant.new(
+  {
+    'merchant_name' => 'Tesco'
+  }
+)
+
+merchant4.save()
+
+merchant5 = Merchant.new(
+  {
+    'merchant_name' => 'EasyJet'
+  }
+)
+
 # Tags
 
 tag1 = Tag.new(
@@ -55,11 +69,25 @@ tag2.save()
 
 tag3 = Tag.new(
   {
-    'tag_name' => 'stationery'
+    'tag_name' => 'flights'
   }
 )
 
 tag3.save()
+
+tag4 = Tag.new(
+  {
+    'tag_name' => 'gifts'
+  }
+)
+
+tag4.save()
+
+tag5 = Tag.new(
+  {
+    'tag_name' => 'clothing'
+  }
+)
 
 # Budgets
 
@@ -98,7 +126,7 @@ budget3.save()
 transaction1 = Transaction.new(
   {
     'merchant_id' => merchant1.id,
-    'tag_id' => tag1.id,
+    'tag_id' => tag4.id,
     'budget_id' => budget2.id,
     'amount' => 34.99,
     'transaction_time' => '2019-11-28 14:30'
@@ -111,7 +139,7 @@ transaction2 = Transaction.new(
   {
     'merchant_id' => merchant2.id,
     'tag_id' => tag1.id,
-    'budget_id' => budget2.id,
+    'budget_id' => budget1.id,
     'amount' => 25.00,
     'transaction_time' => '2019-11-27 12:25'
   }
@@ -121,10 +149,10 @@ transaction2.save()
 
 transaction3 = Transaction.new(
   {
-    'merchant_id' => merchant3.id,
-    'tag_id' => tag3.id,
+    'merchant_id' => merchant4.id,
+    'tag_id' => tag2.id,
     'budget_id' => budget3.id,
-    'amount' => 12.00,
+    'amount' => 24.00,
     'transaction_time' => '2019-11-27 10:20'
   }
 )
