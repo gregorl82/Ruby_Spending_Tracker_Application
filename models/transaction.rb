@@ -119,7 +119,7 @@ class Transaction
     return output
   end
 
-  # method to return transactions ordered by transaction_time
+  # class method to return transactions ordered by transaction_time
   def self.order_by_time()
     sql = "SELECT * FROM transactions ORDER BY transaction_time"
     transactions = SqlRunner.run(sql)

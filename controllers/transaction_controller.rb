@@ -12,8 +12,7 @@ get '/transactions' do
   @budgets = Budget.all()
   @total = Transaction.total()
   @months = Month.all()
-  transactions = Transaction.all()
-  @transactions = transactions.sort_by! {|transaction| transaction.id}
+  @transactions = Transaction.all()
   erb(:"transactions/index")
 end
 
@@ -62,11 +61,10 @@ get '/transactions/order/:order' do
   @tags = Tag.all()
   @budgets = Budget.all()
   @total = Transaction.total()
-  transactions = Transaction.all()
   if order == 'asc'
-    @transactions = transactions.sort_by! {|transaction| transaction.id}.reverse
+    @transactions = Transaction.order_by_time()
   elsif order == 'desc'
-    @transactions = transactions.sort_by! {|transaction| transaction.id}
+    @transactions = Transaction.order_by_time().reverse
   end
   erb(:"transactions/index")
 end
