@@ -20,14 +20,15 @@ it can also contain screenshots! -->
   <li>The user should be able to assign tags and merchants to a transaction, as well as an amount spent on each transaction.</li>
   <li>The app should display all the transactions a user has made in a single view, with each transaction’s amount, merchant and tag, and a total for all transactions.</li>
 </ul>
+
 ### Inspired by:
 <p>Monzo, MoneyDashboard, lots of mobile/online banking apps</p>
 
 ### Possible Extensions
 <ul>
-<li>Transactions should have a timestamp, and the user should be able to view transactions sorted by the time they took place.</li>
-<li>The user should be able to supply a budget, and the app should alert the user somehow when when they are nearing this budget or have gone over it.</li>
-<li>The user should be able to filter their view of transactions, for example, to view all transactions in a given month, or view all spending on groceries.</li>
+  <li>Transactions should have a timestamp, and the user should be able to view transactions sorted by the time they took place.</li>
+  <li>The user should be able to supply a budget, and the app should alert the user somehow when when they are nearing this budget or have gone over it.</li>
+  <li>The user should be able to filter their view of transactions, for example, to view all transactions in a given month, or view all spending on groceries.</li>
 </ul>
 
 ## Technologies used
@@ -68,5 +69,3 @@ it can also contain screenshots! -->
   <li>Open Chrome and navigate to <strong>'localhost:4567'</strong> to run the application</li>
   <li>To exit the application, type <strong>Crtl-C</strong> in the command line</li>
 </ol>
-
-## Screenshots
