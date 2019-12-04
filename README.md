@@ -1,9 +1,3 @@
-<!-- The README should contain:
-running instructions for your applications (so other people can clone it and run it)
-your brief
-the technologies you used
-it can also contain screenshots! -->
-
 <h1 align="center">Spendz</h1>
 
 ## Introduction
