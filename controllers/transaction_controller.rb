@@ -32,9 +32,9 @@ end
 
 get '/transactions/:tag' do
   @tag = params['tag']
-  @transactions = Transaction.filter_by_tag(params['tag'])
+  @transactions = Transaction.filter_by_tag(@tag)
   @total = Transaction.get_total(@transactions)
-  erb(:"transactions/filtered")
+  erb(:"transactions/filteredbytag")
 end
 
 get '/transactions/:id/edit' do
@@ -71,11 +71,39 @@ get '/transactions/order/:order' do
   erb(:"transactions/index")
 end
 
+get '/transactions/orderbytag/:tag/:order' do
+  order = params['order']
+  @tag = params['tag']
+  transactions = Transaction.filter_by_tag(@tag)
+  if (order == 'asc')
+    @transactions = transactions.sort_by! {|transaction| transaction.transaction_time}
+  elsif (order == 'desc')
+    @transactions = transactions.sort_by! {|transaction| transaction.transaction_time}.reverse
+  end
+  @total = Transaction.get_total(@transactions)
+  erb(:"transactions/filteredbytag")
+end
+
 get '/transactions/month/:month' do
   month = params['month']
-  @tag = month
+  @month = month
   transactions = Transaction.all()
   @transactions = Transaction.get_transactions_by_month(transactions, month)
   @total = Transaction.get_total(@transactions)
-  erb(:"transactions/filtered")
+  erb(:"transactions/filteredbymonth")
+end
+
+get '/transactions/month/:month/:order' do
+  order = params['order']
+  month = params['month']
+  @month = month
+  transactions = Transaction.all()
+  filtered_transactions = Transaction.get_transactions_by_month(transactions, month)
+  if (order == 'asc')
+    @transactions = filtered_transactions.sort_by! {|transaction| transaction.transaction_time}
+  elsif (order == 'desc')
+    @transactions = filtered_transactions.sort_by! {|transaction| transaction.transaction_time}.reverse
+  end
+  @total = Transaction.get_total(@transactions)
+  erb(:"transactions/filteredbymonth")
 end

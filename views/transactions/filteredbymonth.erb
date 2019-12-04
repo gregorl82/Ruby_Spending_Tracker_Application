@@ -1,0 +1,67 @@
+<header>
+  <h2>
+    <img src="/icons/date.png" alt="tag" height="40px">
+    <%= @month %>
+  </h2>
+  <h3>
+    Spending: £<%="%.2f" % @total %>
+  </h3>
+</header>
+
+<main>
+  
+  <nav>
+    <ul>
+      <li class="dropdown">
+        <img src="/icons/date.png" alt="edit" height="25px">
+        Order by Date
+        <ul class="dropdown-content">
+          <li><a href="/transactions/month/<%= @month %>/asc">Ascending</a></li>
+          <li><a href="/transactions/month/<%= @month %>/desc">Descending</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+
+  <% if @transactions.count != 0 %>
+
+    <div class="filtered-transactions header">
+      <p class="item">Time</p>
+      <p class="item">Date</p>
+      <p class="item">Merchant</p>
+      <p class="item">Amount</p>
+      <p class="item">Budget</p>
+      <p class="item">Edit</p>
+      <p class="item">Delete</p>
+    </div>
+
+    <% for transaction in @transactions %>
+    <div class="filtered-transactions">
+      <p class="item"><%= transaction.display_time %></p>
+      <p class="item"><%= transaction.display_date %></p>
+      <p class="item"><%= transaction.merchant().merchant_name %></p>
+      <p class="item">£<%= "%.2f" % transaction.amount %></p>
+      <p class="item"><%= transaction.budget().budget_name %></p>
+      <p>
+        <a href="/transactions/<%= transaction.id %>/edit">
+        <img src="/icons/edit.png" alt="edit" height="40px">
+        </a>
+      </p>
+      <form action="/transactions/<%= transaction.id %>/delete" method="post">
+        <button type="submit" style="border: 0; background: transparent">
+        <img src="/icons/delete.png" height="38px" alt="submit">
+        </button>
+      </form>
+    </div>
+    <% end %>
+
+  <% else %>
+
+    <p>No transactions to display</p>
+
+  <% end %>
+
+  <p class="manage-bttns"><a href="/transactions">Back to transactions</a></p>
+
+</main>

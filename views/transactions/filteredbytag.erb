@@ -1,6 +1,6 @@
 <header>
   <h2>
-    <img src="/icons/filter.png" alt="tag" height="40px">
+    <img src="/icons/tag.png" alt="tag" height="40px">
     <%= @tag %>
   </h2>
   <h3>
@@ -9,7 +9,18 @@
 </header>
 
 <main>
-
+  <nav>
+    <ul>
+      <li class="dropdown">
+        <img src="/icons/date.png" alt="edit" height="25px">
+        Order by Date
+        <ul class="dropdown-content">
+          <li><a href="/transactions/orderbytag/<%= @tag %>/asc">Ascending</a></li>
+          <li><a href="/transactions/orderbytag/<%= @tag %>/desc">Descending</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
   <% if @transactions.count != 0 %>
 
     <div class="filtered-transactions header">
