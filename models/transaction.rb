@@ -147,15 +147,23 @@ class Transaction
 
   # class level method to filter array of transaction objects by month
   def self.get_transactions_by_month(transactions, month)
+    # pass in an array of months
     months_array = Month.all()
+    # set up an empty array for the filtered transactions
     filtered_transactions = []
+    # convert the passed in month to its corresponding month number
     month_as_number = (months_array.index(month)) + 1
+    # for each transaction in the passed in transactions array:
+    # create a new Time object from the transaction_time attribute,
+    # compare the month number of this with the month number of the passed in month
+    # if they match, push the transaction to the filtered transactions array
     for transaction in transactions
       time = Time.parse(transaction.transaction_time)
       if (time.mon == month_as_number)
         filtered_transactions.push(transaction)
       end
     end
+    # return the filtered transaction array
     return filtered_transactions
   end
 
