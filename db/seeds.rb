@@ -1,4 +1,3 @@
-require('pry')
 require_relative('../models/merchant.rb')
 require_relative('../models/tag.rb')
 require_relative('../models/budget.rb')
@@ -158,7 +157,3 @@ transaction3 = Transaction.new(
 )
 
 transaction3.save()
-
-binding.pry
-
-nil
