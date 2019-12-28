@@ -1,7 +1,7 @@
 <h1 align="center">Spendz</h1>
 
 ## Introduction
-<p>A web application for tracking a users' spending, built in Ruby and Sinatra.</p>
+<p>A web application for tracking a users' spending, built with Ruby and Sinatra.</p>
 
 ## Project brief
 
@@ -37,10 +37,9 @@
 
 ## Running instructions
 <ol>
-  <li>Ensure that Ruby and PostgreSQL are installed.</li>
+  <li>Ensure that Ruby and PostgreSQL are installed locally.</li>
   <li>Install the following Ruby gems:
     <ul>
-      <li>'pry'</li>
       <li>'sinatra'</li>
       <li>'sinatra-contrib'</li>
       <li>'pg'
@@ -52,7 +51,6 @@
       <li>'createdb spending_tracker'</li>
       <li>'psql -d spending_tracker -f db/spending_tracker.sql'</li>
       <li>'ruby db/seeds.rb'</li>
-      <li>'!!!'</li>
     </ol>
   </li>
   <li>Run the following command in the command-line to start the web server:
