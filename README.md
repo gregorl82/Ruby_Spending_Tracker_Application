@@ -7,6 +7,10 @@
 
 <p>Build an app that allows a user to track their spending.</p>
 
+### Live Demo
+
+<p>A live demo of the app can be accessed at: <a href="http://spendz-spending-tracker.herokuapp.com/">http://spendz-spending-tracker.herokuapp.com/</a></p>
+
 ### MVP
 <ul>
   <li>The app should allow the user to create, edit and delete merchants, e.g. Tesco, Amazon, ScotRail</li>
@@ -18,7 +22,7 @@
 ### Inspired by:
 <p>Monzo, MoneyDashboard, lots of mobile/online banking apps</p>
 
-### Possible Extensions
+### Extensions
 <ul>
   <li>Transactions should have a timestamp, and the user should be able to view transactions sorted by the time they took place.</li>
   <li>The user should be able to supply a budget, and the app should alert the user somehow when when they are nearing this budget or have gone over it.</li>
